@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yogurt & Helados Bezú</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  <style>
+    :root {
+      --color-acento: #ff6347;
+      --color-principal: #333;
+      --color-fondo-claro: #fffaf0;
+      --color-sombra: rgba(0, 0, 0, 0.1);
+      --color-borde: #ddd;
+      --color-exito: #25D366; /* Verde WhatsApp */
+    }
+
+    body {
+  margin: 0;
+  font-family: 'Poppins', Arial, sans-serif;
+  color: var(--color-principal);
+  min-height: 100vh;
+  position: relative; /* necesario para usar ::before */
+}
+
+
+/* Fondo con imagen + degradado */
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    linear-gradient(rgba(0, 100, 255, 0.2), rgba(0, 150, 255, 0.5)), /* degradado azul */
+    url("imgs/fondo.png") no-repeat center center fixed; /* imagen */
+  background-size: cover;
+  opacity: 0.5; /* ajusta la fuerza del fondo */
+  z-index: -1;  /* lo manda al fondo */
+}
+
+
+    .container {
+  width: 90%;
+  max-width: 1200px;
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.9); 
+  border-radius: 20px;
+  box-shadow: 0 10px 30px var(--color-sombra);
+  margin: 40px auto; /* <-- centra horizontal */
+}
+
+
+    header {
+  display: flex;
+  flex-direction: column; /* apila logo y título */
+  align-items: center; /* centra horizontal */
+  text-align: center;
+  gap: 15px;
+  margin-bottom: 30px;
+  border-bottom: 2px solid var(--color-borde);
+  padding-bottom: 20px;
+}
+
+
+
+  .slogan {
+  font-family: 'Playball', cursive; /* puedes cambiar a otra fuente si quieres */
+  font-size: 2.8rem;              /* tamaño más grande */
+  color: #34a181;                 /* color destacado */
+  margin-top: -50.5px;               /* espacio con el logo */
+  font-weight: 600;               /* grosor ligero */
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.1); /* opcional para resaltar */
+}
+
+
+h1 {
+  font-family: 'Lobster', cursive;
+  color: var(--color-acento);
+  font-size: 4.5rem; /* más grande */
+  margin: 0;
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease;
+}
+
+h1:hover {
+  transform: scale(1.05);
+  color: #ff452b; /* efecto en hover */
+}
+
+.logo {
+  width: 750px;   /* ancho del logo */
+  height: auto;   /* mantiene la proporción */
+  margin-top: -80.5px;               /* espacio con el header */
+  display: block;
+}
+
+
+
+
+    h2 {
+      font-family: 'Playball', cursive;
+      color: var(--color-acento);
+      border-bottom: 1px dashed var(--color-borde);
+      padding-bottom: 10px;
+      margin-top: 0;
+    }
+
+    /* Productos */
+    .productos {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+    }
+
+    .producto {
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 6px 12px var(--color-sombra);
+      transition: transform 0.3s;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      min-height: 420px; /* igual altura */
+    }
+
+    .producto:hover {
+      transform: translateY(-8px) scale(1.02);
+    }
+
+    .producto img {
+      width: 100%;
+      max-width: 200px;
+      height: 180px; /* fuerza altura uniforme */
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+
+    /* Extras */
+    .extras {
+      margin: 10px 0;
+      text-align: left;
+      font-size: 0.9rem;
+      width: 100%;
+    }
+
+    .extras label {
+      display: flex;
+      align-items: center;
+      margin-bottom: 5px;
+      cursor: pointer;
+    }
+
+    .extras input[type="checkbox"] {
+      display: none;
+    }
+
+    .extras input[type="checkbox"] + span {
+      display: inline-block;
+      width: 18px;
+      height: 18px;
+      border: 2px solid var(--color-acento);
+      border-radius: 4px;
+      margin-right: 8px;
+      position: relative;
+    }
+
+    .extras input[type="checkbox"]:checked + span::before {
+      content: '✔';
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+      background-color: var(--color-acento);
+      color: white;
+      font-size: 14px;
+    }
+
+    /* Botones */
+    button {
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.2s;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+    }
+
+    .agregar {
+      background: var(--color-acento);
+      color: white;
+    }
+
+    .eliminar {
+      background: #e74c3c;
+      color: white;
+      font-size: 0.9rem;
+      padding: 5px 10px;
+      width: auto;
+    }
+
+    /* Carrito */
+    #carrito {
+      margin-top: 40px;
+      padding: 25px;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 15px;
+      box-shadow: 0 6px 12px var(--color-sombra);
+    }
+
+    #lista-carrito li {
+      list-style: none;
+      padding: 10px 0;
+      border-bottom: 1px dotted var(--color-borde);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    #finalizar {
+      margin-top: 20px;
+      background: #25D366;
+      color: white;
+      padding: 12px 20px;
+      width: auto;
+      display: block;
+      margin: 20px auto 0;
+    }/* Formulario de Pedido */
+     .input-data {
+     max-width: 400px;
+     margin: 20px auto;
+     padding: 20px;
+     background: #f9f9f9;
+     border-radius: 10px; 
+     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+     .input-data label, .input-data input {
+     display: block;
+     width: 100%;
+     margin-bottom: 10px;
+     }
+     .input-data input {
+     padding: 10px;
+     border: 1px solid #ccc;
+     border-radius: 5px;
+     box-sizing: border-box;
+    }
+
+  #finalizar { 
+     margin-top: 20px; 
+     background: var(--color-exito); 
+     color: white; 
+     padding: 12px 20px; 
+     width: 100%; 
+     display: block; 
+     margin: 20px auto 0; 
+     font-size: 1.1rem; 
+    }
+     #registro-status {
+     text-align: center;
+     margin-top: 10px;
+     font-weight: 600;
+   }
+    
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+  <h1>Yogurt Artesanal</h1>
+  <img src="imgs/logo.gif" alt="Logo Yogurt & Helados" class="logo">
+  <p class="slogan">Sabor y salud</p>
+</header>
+
+
+    <!-- Productos -->
+    <div id="productos" class="productos"></div>
+
+     <!-- Carrito / Formulario de Pedido Único -->
+
+    <div id="carrito">
+    <h2><i class="fas fa-shopping-cart"></i> Carrito de Pedido</h2>
+    <ul id="lista-carrito"></ul>
+    <p><strong>Total: S/ <span id="total">0.00</span></strong></p>
+    <p id="pedido-vacio" style="text-align:center; color:#e74c3c; font-weight:600;">Añade productos para continuar.</p>
+    
+    
+
+    
+    <!-- Formulario de datos de cliente para el pedido -->
+    <div class="input-data">
+    <label for="nombre_pedido">Tu Nombre o Alias:</label>
+    <input type="text" id="nombre_pedido" placeholder="Ej: Jimmy" required>
+ 
+    <label for="telefono_pedido">Número de celular:</label>
+    <input type="tel" id="telefono_pedido" placeholder="9** *** ***" required>
+ 
+    <label for="direccion_pedido">Dirección de Entrega:</label>
+    <input type="text" id="direccion_pedido" placeholder="Ej: Av. Los Girasoles 123" required>
+  </div>
+ 
+    <button id="finalizar" onclick="enviarPedido()"><i class="fab fa-whatsapp"></i> Procesar y Enviar Pedido</button>
+    <p id="registro-status" style="display:none;"></p>  
+  </div>
+
+<script>
+    
+    // 
+    const GAS_URL_PEDIDO = 'https://script.google.com/macros/s/AKfycbzW6TmM1jiRPMp6437p9xXWZYeo5krV9Lx8krxtm0rs11HjOgOirstlPpgrpXpfpXwx7w/exec';
+    
+    let carrito = [];
+    let total = 0;
+  
+    // Variables de color para JS
+    const rootStyles = getComputedStyle(document.documentElement);
+    const COLOR_EXITO = rootStyles.getPropertyValue('--color-exito').trim();
+    const COLOR_PRINCIPAL = rootStyles.getPropertyValue('--color-principal').trim();
+    const COLOR_ACENTO = rootStyles.getPropertyValue('--color-acento').trim();
+
+    
+    // Lista de productos integrada
+    const productos = [
+      { "nombre": "Fresa", "precio": 10, "imagen": "imgs/fresa.jpg" },
+      { "nombre": "Guanabana", "precio": 10, "imagen": "imgs/guanabana.jpg" },
+      { "nombre": "Piña", "precio": 10, "imagen": "imgs/piña.jpg" },
+      { "nombre": "Durazno", "precio": 10, "imagen": "imgs/durazno.jpg" },
+      { "nombre": "Lúcuma", "precio": 10, "imagen": "imgs/lucma.jpg" },
+      { "nombre": "Vainilla", "precio": 10, "imagen": "imgs/vainilla.jpg" },
+      { "nombre": "Natural", "precio": 9.5, "imagen": "imgs/natural.jpg" }, 
+      { "nombre": "Arándano", "precio": 12, "imagen": "imgs/arandanos.jpg" }
+    ];
+
+    function cargarProductos() {
+      const contenedor = document.getElementById("productos");
+      productos.forEach((prod, index) => {
+        const div = document.createElement("div");
+        div.classList.add("producto");
+        div.innerHTML = `
+          <img src="${prod.imagen}" alt="${prod.nombre}">
+          <h3>${prod.nombre}</h3>
+          <p>S/ ${prod.precio}</p>
+          <div class="extras">
+            <label><input type="checkbox" value="Chía"><span></span> + Chía (+S/1)</label>
+            <label><input type="checkbox" value="Linaza"><span></span> + Linaza (+S/1)</label>
+            <label><input type="checkbox" value="Cereal"><span></span> + Cereal (+S/2)</label>
+          </div>
+          <button class="agregar" onclick="agregarCarrito(${index}, this)"><i class="fas fa-plus-circle"></i> Añadir</button>
+        `;
+        contenedor.appendChild(div);
+      });
+    }
+
+    // *** FUNCIÓN MODIFICADA: Agrupa productos idénticos ***
+    function agregarCarrito(index, btn) {
+      const producto = productos[index];
+      const card = btn.parentElement;
+
+      let extras = [];
+      let extraPrecio = 0;
+
+      card.querySelectorAll("input[type=checkbox]").forEach(chk => {
+        if (chk.checked) {
+          extras.push(chk.value);
+          extraPrecio += (chk.value === "Cereal" ? 2 : 1);
+          // Desmarcar para el siguiente uso
+          chk.checked = false; 
+        }
+      });
+
+      const precioUnitario = parseFloat((producto.precio + extraPrecio).toFixed(2));
+      
+      // Crea una 'clave' única para el producto + extras
+      const clave = producto.nombre + (extras.length > 0 ? "_" + extras.sort().join("_") : "");
+
+      // Busca si el item ya existe en el carrito
+      const itemExistente = carrito.find(item => item.clave === clave);
+
+      if (itemExistente) {
+        // Si existe, solo incrementa la cantidad
+        itemExistente.cantidad++;
+        itemExistente.precio = parseFloat((itemExistente.cantidad * precioUnitario).toFixed(2)); // Actualiza el total del grupo
+      } else {
+        // Si no existe, añade un nuevo item
+        const item = {
+          clave: clave, // La clave única para agrupar
+          nombre: producto.nombre,
+          precioUnitario: precioUnitario, // Precio de UNA unidad
+          precio: precioUnitario, // Precio inicial (1 unidad)
+          extras: extras,
+          cantidad: 1
+        };
+        carrito.push(item);
+      }
+
+      total = parseFloat((total + precioUnitario).toFixed(2));
+      actualizarCarrito();
+    }
+
+    // *** FUNCIÓN MODIFICADA: Muestra cantidad en el listado ***
+    function actualizarCarrito() {
+      const lista = document.getElementById("lista-carrito");
+      lista.innerHTML = "";
+      
+      if (carrito.length === 0) {
+        document.getElementById('pedido-vacio').style.display = 'block';
+        document.getElementById('finalizar').disabled = true;
+      } else {
+        document.getElementById('pedido-vacio').style.display = 'none';
+        document.getElementById('finalizar').disabled = false;
+      }
+      
+      // Recalcula el total a partir de los items agrupados para asegurar coherencia
+      total = carrito.reduce((sum, item) => sum + item.precio, 0);
+
+      carrito.forEach((item, i) => {
+        const li = document.createElement("li");
+        
+        let detalleProducto = `*${item.cantidad} x ${item.nombre}`;
+        if (item.extras.length > 0) {
+          detalleProducto += ` (+${item.extras.join(", ")})`;
+        }
+
+        li.innerHTML = `
+          <span>
+            <strong>${detalleProducto}</strong>
+            <small>(S/${item.precioUnitario.toFixed(2)} c/u)</small>
+          </span>
+          <span>
+            S/ ${item.precio.toFixed(2)}
+            <button class="eliminar" onclick="eliminarItem(${i})" title="Eliminar"><i class="fas fa-trash-alt"></i></button>
+          </span> 
+        `;
+        lista.appendChild(li);
+      });
+      
+      document.getElementById("total").textContent = total.toFixed(2);
+    }
+
+    // *** FUNCIÓN MODIFICADA: Elimina por completo el grupo de productos. ***
+    function eliminarItem(index) {
+        // Al eliminar, restamos el total del grupo completo
+        total = parseFloat((total - carrito[index].precio).toFixed(2)); 
+        carrito.splice(index, 1);
+        actualizarCarrito();
+    }
+
+     /**
+     * Función que REGISTRA de forma ASÍNCRONA y abre WhatsApp INMEDIATAMENTE.
+     */
+    function enviarPedido() {
+      const btn = document.getElementById("finalizar");
+      const statusDiv = document.getElementById('registro-status');
+      const originalText = btn.innerHTML;
+      
+      // --- 1. VALIDACIÓN INICIAL ---
+      if (carrito.length === 0) {
+        statusDiv.style.display = 'block';
+        statusDiv.textContent = '¡El carrito está vacío!';
+        statusDiv.style.color = COLOR_ACENTO;
+        setTimeout(() => statusDiv.style.display = 'none', 3000);
+        return;
+      }
+      
+      const nombre = document.getElementById('nombre_pedido').value.trim();
+      const telefono = document.getElementById('telefono_pedido').value.trim();
+      const direccion = document.getElementById('direccion_pedido').value.trim();
+      const pedidoDetallado = generarTextoPedido();
+      const totalPedido = total.toFixed(2);
+
+      if (!nombre || !telefono || !direccion) {
+        statusDiv.style.display = 'block';
+        statusDiv.textContent = '⚠️ Completa tus datos de contacto.';
+        statusDiv.style.color = '#e74c3c';
+        setTimeout(() => statusDiv.style.display = 'none', 3000);
+        return;
+      }
+      
+      // --- 2. PREPARACIÓN E INDICADOR DE PROCESO ---
+      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Procesando...';
+      btn.disabled = true;
+
+      // Mostramos el mensaje UNIFICADO de éxito de UX (Enfocando en WhatsApp)
+      statusDiv.style.display = 'block';
+      statusDiv.textContent = '¡Gracias! Tu solicitud ha sido recibida. Revisa tu WhatsApp.';
+      statusDiv.style.color = COLOR_EXITO; // Verde de éxito
+
+      // --- 3. ENVÍO INDEPENDIENTE A GOOGLE SHEETS (NO BLOQUEANTE) ---
+      const dataSheets = {
+        nombre: nombre, 
+        pedido: pedidoDetallado,
+        total: totalPedido,
+        direccion: direccion,
+        telefono: telefono
+      };
+
+      if (GAS_URL_PEDIDO.length === 0) { 
+        console.error("Error: Falta configurar la variable GAS_URL_PEDIDO. Solo se enviará por WhatsApp.");
+      } else {
+        // Ejecutar fetch sin 'await' para que corra en segundo plano
+        fetch(GAS_URL_PEDIDO, {
+            method: 'POST',
+            mode: 'cors',
+            body: JSON.stringify(dataSheets)
+        })
+        .then(response => response.json())
+        .then(result => {
+            // Registro exitoso (solo para log interno)
+            console.log('✅ Registro en Sheets OK:', result);
+        })
+        .catch(error => {
+            // Error de red o GAS (solo para log interno)
+            console.error('❌ Error de red o GAS al guardar. WhatsApp se envió de todas formas.', error);
+        });
+      }
+
+      // --- 4. ABRIR WHATSAPP INMEDIATAMENTE (Flujo principal de UX) ---
+      const mensajeWhatsApp = generarMensajeWhatsApp(nombre, telefono, direccion, totalPedido);
+      
+      const numero = "51935643297"; // ¡CAMBIA ESTE NÚMERO POR EL TUYO!
+      const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensajeWhatsApp)}`;
+      
+      // Breve pausa visual antes de abrir
+      setTimeout(() => {
+        window.open(url, "_blank");
+        // Limpiar interfaz después de abrir WhatsApp
+        limpiarPedido();
+      }, 1500); // Damos 1.5s para que el usuario lea el mensaje de éxito
+
+      // --- 5. Restablecer el botón ---
+      setTimeout(() => {
+        statusDiv.style.display = 'none';
+        btn.innerHTML = originalText;
+        btn.disabled = false;
+      }, 5000);
+    }
+
+    // *** FUNCIÓN MODIFICADA ***
+    function generarTextoPedido() {
+      // Cada producto se une con un salto de línea para mejor visualización en Sheets
+      return carrito.map(item => {
+        let detalle = `- ${item.cantidad}x${item.nombre}`; // Añadir guion para lista
+        if (item.extras.length > 0) {
+          detalle += ` (+${item.extras.join(", ")})`;
+        }
+        detalle += ` [S/${item.precio.toFixed(2)}]`;
+        return detalle;
+      }).join('\n'); // <-- CAMBIO CLAVE: Usa '\n' (salto de línea) en lugar de ' | '
+    }
+
+    function generarMensajeWhatsApp(nombre, telefono, direccion, totalPedido) {
+      let mensaje = `¡Hola! Quisiera realizar mi pedido.\n\nMi nombre es *${nombre}* y este es el detalle:\n\n*📝 Detalle del Pedido:*\n`;
+      const emojiItem = '➤';
+      
+      carrito.forEach(item => {
+        mensaje += `${emojiItem} *${item.cantidad}x* ${item.nombre}${item.extras.length > 0 ? " (+" + item.extras.join(", ") + ")" : ""} - S/ ${item.precio.toFixed(2)}\n`;
+      });
+      
+      mensaje += `\n*TOTAL: S/ ${totalPedido}*\n\n`;
+      mensaje += `*Datos para el Delivery:*\n📞 Teléfono: ${telefono}\n📍 Dirección: ${direccion}`;
+      return mensaje;
+    }
+
+    function limpiarPedido() {
+      carrito = [];
+      total = 0;
+      actualizarCarrito();
+      document.getElementById('nombre_pedido').value = '';
+      document.getElementById('telefono_pedido').value = '';
+      document.getElementById('direccion_pedido').value = '';
+      // Dejamos el statusDiv para que el cliente lea el mensaje de éxito unificado por un tiempo
+    }
+    cargarProductos();
+    
+
+  </script>
+</body>
+</html>
+
