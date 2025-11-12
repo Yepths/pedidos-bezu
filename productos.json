@@ -1,0 +1,10 @@
+[
+  { "nombre": "Fresa", "precio": 10, "imagen": "imgs/fresa.jpg" },
+  { "nombre": "Guanabana", "precio": 10, "imagen": "imgs/guanabana.jpg" },
+  { "nombre": "Piña", "precio": 10, "imagen": "imgs/piña.jpg" },
+  { "nombre": "Durazno", "precio": 10, "imagen": "imgs/durazno.jpg" },
+  { "nombre": "Lúcuma", "precio": 10, "imagen": "imgs/lucma.jpg" },
+  { "nombre": "Vainilla", "precio": 10, "imagen": "imgs/vainilla.jpg" },
+  { "nombre": "Natural", "precio": 9.5, "imagen": "imgs/natural.jpg" },
+  { "nombre": "Arándano", "precio": 12, "imagen": "imgs/arandanos.jpg" }
+]

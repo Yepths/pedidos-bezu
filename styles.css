@@ -1,0 +1,458 @@
+ /* --- ESTILOS PARA LA PANTALLA DE INTRODUCCIÓN --- */
+#intro-splash {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-fondo-claro); /* Usa tu color de fondo (blanco/crema) */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000; /* Asegura que esté por encima de todo */
+    opacity: 1;
+    transition: opacity 1s ease-out, visibility 1s; /* Transición suave */
+}
+
+#intro-splash.hidden {
+    opacity: 0;
+    visibility: hidden; /* Oculta completamente el div después del fade */
+}
+
+.intro-logo {
+    width: 300px; /* Tamaño más manejable para la intro */
+    max-width: 80%;
+    animation: pulse 1.5s infinite alternate; /* Animación simple */
+}
+
+@keyframes pulse {
+    from { transform: scale(1); }
+    to { transform: scale(1.05); }
+}
+
+/* Barra de carga simple (opcional) */
+.loader-bar {
+    width: 150px;
+    height: 4px;
+    background-color: var(--color-acento);
+    margin-top: 30px;
+    border-radius: 2px;
+    animation: loading 2s infinite linear;
+    transform-origin: left;
+}
+
+@keyframes loading {
+    0% { transform: scaleX(0.1); opacity: 0.5; }
+    50% { transform: scaleX(1); opacity: 1; }
+    100% { transform: scaleX(0.1); opacity: 0.5; }
+}
+
+    :root {
+      --color-acento: #ff6347;
+      --color-principal: #333;
+      --color-fondo-claro: #fffaf0;
+      --color-sombra: rgba(0, 0, 0, 0.1);
+      --color-borde: #ddd;
+      --color-exito: #25D366; /* Verde WhatsApp */
+    }
+
+    body {
+  margin: 0;
+  font-family: 'Poppins', Arial, sans-serif;
+  color: var(--color-principal);
+  min-height: 100vh;
+  position: relative; /* necesario para usar ::before */
+}
+
+
+/* Fondo con imagen + degradado */
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    linear-gradient(rgba(0, 100, 255, 0.2), rgba(0, 150, 255, 0.5)), /* degradado azul */
+    url("imgs/fondo.png") no-repeat center center fixed; /* imagen */
+  background-size: cover;
+  opacity: 0.5; /* ajusta la fuerza del fondo */
+  z-index: -1;  /* lo manda al fondo */
+}
+
+
+    .container {
+  width: 90%;
+  max-width: 1200px;
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.9); 
+  border-radius: 20px;
+  box-shadow: 0 10px 30px var(--color-sombra);
+  margin: 40px auto; /* <-- centra horizontal */
+}
+
+
+    header {
+  display: flex;
+  flex-direction: column; /* apila logo y título */
+  align-items: center; /* centra horizontal */
+  text-align: center;
+  gap: 15px;
+  margin-bottom: 30px;
+  border-bottom: 2px solid var(--color-borde);
+  padding-bottom: 20px;
+}
+
+
+
+  .slogan {
+  font-family: 'Playball', cursive; /* puedes cambiar a otra fuente si quieres */
+  font-size: 3.8rem;              /* tamaño más grande */
+  color: #1c7c5f;                 /* color destacado */
+  margin-top: -50.5px;               /* espacio con el logo */
+  font-weight: 750;               /* grosor ligero */
+  text-shadow: 2px 2px 3px rgba(0,0,0,0.1); /* opcional para resaltar */
+}
+
+
+h1 {
+  font-family: 'Lobster', cursive;
+  color: var(--color-acento);
+  font-size: 4.5rem; /* más grande */
+  margin: 0;
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease;
+}
+
+h1:hover {
+  transform: scale(1.05);
+  color: #ff452b; /* efecto en hover */
+}
+
+.logo {
+  width: 750px;   /* ancho del logo */
+  height: auto;   /* mantiene la proporción */
+  margin-top: -80.5px;               /* espacio con el header */
+  display: block;
+}
+
+    h2 {
+      font-family: 'Playball', cursive;
+      color: var(--color-acento);
+      border-bottom: 1px dashed var(--color-borde);
+      padding-bottom: 10px;
+      margin-top: 0;
+    }
+
+    /* Productos */
+    .productos {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+    }
+
+    .producto {
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 6px 12px var(--color-sombra);
+      transition: transform 0.3s;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      min-height: 420px; /* igual altura */
+    }
+
+    .producto:hover {
+      transform: translateY(-8px) scale(1.02);
+    }
+
+    .producto img {
+      width: 100%;
+      max-width: 200px;
+      height: 180px; /* fuerza altura uniforme */
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+
+    /* Extras */
+    .extras {
+      margin: 10px 0;
+      text-align: left;
+      font-size: 0.99rem;
+      width: 100%;
+    }
+
+    .extras label {
+      display: flex;
+      align-items: center;
+      margin-bottom: 5px;
+      cursor: pointer;
+    }
+
+    .extras input[type="checkbox"] {
+      display: none;
+    }
+
+    .extras input[type="checkbox"] + span {
+      display: inline-block;
+      width: 18px;
+      height: 18px;
+      border: 2px solid var(--color-acento);
+      border-radius: 4px;
+      margin-right: 8px;
+      position: relative;
+    }
+
+    .extras input[type="checkbox"]:checked + span::before {
+      content: '✔';
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+      background-color: var(--color-acento);
+      color: white;
+      font-size: 14px;
+    }
+
+    /* Botones */
+    button {
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.2s;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+    }
+
+    .agregar {
+      background: var(--color-acento);
+      color: white;
+    }
+
+    .eliminar {
+      background: #e74c3c;
+      color: white;
+      font-size: 0.9rem;
+      padding: 5px 10px;
+      width: auto;
+    }
+
+    /* Carrito */
+    #carrito {
+      margin-top: 40px;
+      padding: 25px;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 15px;
+      box-shadow: 0 6px 12px var(--color-sombra);
+    }
+
+    #lista-carrito li {
+      list-style: none;
+      padding: 10px 0;
+      border-bottom: 1px dotted var(--color-borde);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    #finalizar {
+      margin-top: 20px;
+      background: #25D366;
+      color: white;
+      padding: 12px 20px;
+      width: auto;
+      display: block;
+      margin: 20px auto 0;
+    }/* Formulario de Pedido */
+     .input-data {
+     max-width: 400px;
+     margin: 20px auto;
+     padding: 20px;
+     background: #f9f9f9;
+     border-radius: 10px; 
+     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+     .input-data label, .input-data input {
+     display: block;
+     width: 100%;
+     margin-bottom: 10px;
+     }
+     .input-data input {
+     padding: 10px;
+     border: 1px solid #ccc;
+     border-radius: 5px;
+     box-sizing: border-box;
+    }
+
+  #finalizar { 
+     margin-top: 20px; 
+     background: var(--color-exito); 
+     color: white; 
+     padding: 12px 20px; 
+     width: 100%; 
+     display: block; 
+     margin: 20px auto 0; 
+     font-size: 1.1rem; 
+    }
+     #registro-status {
+     text-align: center;
+     margin-top: 10px;
+     font-weight: 600;
+   }
+   /* --- BOTÓN FLOTANTE DE WHATSAPP --- */
+.whatsapp-float {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 40px;
+    right: 20px;
+    background-color: var(--color-exito); /* Verde WhatsApp */
+    color: #FFF;
+    border-radius: 50px;
+    text-align: center;
+    font-size: 30px;
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.4);
+    z-index: 9999;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s ease;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.1);
+}
+
+/* --- MODAL (POP-UP) DE PREGUNTAS/PEDIDO --- */
+.modal-overlay {
+    /* Oculto por defecto */
+    display: none; 
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 10001;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    position: relative;
+}
+
+.modal-content h3 {
+    color: var(--color-principal);
+    margin-top: 0;
+    font-size: 1.5rem;
+    border-bottom: 2px solid var(--color-acento);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.modal-option {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.3s;
+    cursor: pointer;
+}
+
+.modal-option.whatsapp {
+    background: var(--color-exito);
+    color: white;
+}
+
+.modal-option.faq {
+    background: #f0f0f0;
+    color: var(--color-principal);
+    border: 1px solid var(--color-borde);
+}
+
+.modal-close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #999;
+}
+
+/* --- SECCIÓN DE PREGUNTAS FRECUENTES --- */
+#faq-seccion {
+    display: none; /* Oculto por defecto */
+    padding: 20px;
+    margin-top: 20px;
+    border-top: 1px solid var(--color-borde);
+    text-align: left;
+}
+
+#faq-seccion p {
+    margin-bottom: 15px;
+}
+
+#faq-seccion strong {
+    color: var(--color-acento);
+    display: block;
+    margin-bottom: 5px;
+}
+/* --- ESTILO PARA EL TOTAL DEL CARRITO --- */
+#carrito p strong {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.5rem; /* Hace que el texto sea más grande */
+    margin-top: 15px;
+    padding-top: 10px;
+    border-top: 1px dashed var(--color-borde);
+    color: var(--color-principal);
+}
+
+#total {
+    /* Estilo específicamente para el valor numérico del total */
+    color: var(--color-acento); /* Color acento (rojo/naranja) */
+    font-size: 1.8rem; /* Aún más grande para destacar */
+    font-weight: 800; /* Extra negrita */
+}
+/* --- ESTILO PARA PRECIO UNITARIO DISCRETO --- */
+.precio-unitario {
+    /* Color principal más claro o grisáceo para hacerlo menos llamativo */
+    color: #666; 
+    font-size: 0.8rem; /* Más pequeño */
+    font-weight: 400; /* Normal */
+    margin-left: 5px; /* Espacio después del nombre del producto */
+}
+/* --- ESTILO PARA TOTAL DEL ITEM EN EL CARRITO --- */
+#lista-carrito li > span:last-child {
+    /* Selecciona el contenedor del precio total del item */
+    font-weight: 600; 
+    color: var(--color-principal); /* Mantenemos el color oscuro para legibilidad */
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Separa el precio del botón de eliminar */
+}
+    
