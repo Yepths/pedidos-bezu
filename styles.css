@@ -76,7 +76,7 @@ body::before {
   height: 100%;
   background: 
     linear-gradient(rgba(0, 100, 255, 0.2), rgba(0, 150, 255, 0.5)), /* degradado azul */
-    url("imgs/fondo.png") no-repeat center center fixed; /* imagen */
+    url("/pedidos-bezu/imgs/fondo.png") no-repeat center center fixed; /* imagen */
   background-size: cover;
   opacity: 0.5; /* ajusta la fuerza del fondo */
   z-index: -1;  /* lo manda al fondo */
