@@ -455,4 +455,48 @@ h1:hover {
     align-items: center;
     gap: 10px; /* Separa el precio del botón de eliminar */
 }
+
+/* --- CORRECCIONES PARA MÓVILES (Responsive Design) --- */
+@media (max-width: 600px) {
+    /* Contenedor principal: ocupa todo el ancho */
+    .container {
+        width: 95%;
+        padding: 15px;
+        margin: 15px auto;
+    }
+
+    /* 1. Encabezado */
+    header {
+        /* Restablecemos el flex-direction a column, pero centramos todo */
+        flex-direction: column;
+        gap: 0; /* Eliminamos el espacio entre elementos */
+        padding-bottom: 10px;
+    }
+
+    /* 2. Título principal (H1) */
+    h1 {
+        font-size: 2.5rem; /* Reducimos el tamaño para que quepa */
+    }
+
+    /* 3. Logo */
+    .logo {
+        width: 100%; /* El logo siempre ocupa el 100% del contenedor */
+        max-width: 300px; /* Limita el tamaño para que no sea enorme en tablets */
+        margin-top: 0; /* ¡MUY IMPORTANTE! Eliminamos el margen negativo para centrarlo */
+        margin-bottom: 10px; /* Añadimos espacio debajo si es necesario */
+    }
+
+    /* 4. Slogan */
+    .slogan {
+        font-size: 2.0rem; /* Reducimos el tamaño para que se vea mejor */
+        margin-top: 5px; /* ¡MUY IMPORTANTE! Eliminamos el margen negativo */
+        order: 4; /* Lo movemos hacia abajo si fuera necesario */
+    }
+
+    /* 5. Productos */
+    .productos {
+        /* Aseguramos que solo haya una columna muy ancha en móviles si es necesario */
+        grid-template-columns: 1fr;
+    }
+}
     
