@@ -169,6 +169,20 @@ h1:hover {
     .producto:hover {
       transform: translateY(-8px) scale(1.02);
     }
+    /* --- ESTILO AÑADIDO: Dar grosor al precio y unidad --- */
+.producto p {
+    font-weight: 600; /* Hace que el precio y la unidad sean más gruesos */
+    font-size: 1.2rem; /* Asegura el tamaño que ya tiene */
+    margin: 5px 0 10px 0; /* Asegura el espaciado */
+}
+
+/* Modificamos el grosor de la unidad de medida para que coincida o destaque */
+.unidad-medida {
+    font-size: 0.9rem;
+    color: #252323; 
+    font-weight: 600; /* Lo ponemos en semi-negrita también */
+    margin-left: 5px;
+}
 
     .producto img {
       width: 100%;
@@ -542,8 +556,8 @@ h1:hover {
 /* --- ESTILO PARA LA UNIDAD DE MEDIDA (x 1 Lt) --- */
 .unidad-medida {
     font-size: 0.9rem; /* Un poco más pequeño que el precio */
-    color: #666; /* Gris, para hacerlo discreto */
-    font-weight: 400; /* Normal */
+    color: #252323; /* Gris, para hacerlo discreto */
+    font-weight: 500; /* Normal */
     margin-left: 5px;
 }
     
