@@ -499,4 +499,51 @@ h1:hover {
         grid-template-columns: 1fr;
     }
 }
+
+/* --- ESTILOS PARA BOTÓN FLOTANTE DE WHATSAPP (Nueva implementación) --- */
+
+#whatsapp-btn-float {
+    /* Posicionamiento y Capa (FIJO) */
+    position: fixed; 
+    bottom: 25px; /* Margen desde la parte inferior */
+    right: 25px; /* Margen desde la derecha */
+    z-index: 1000; /* Asegura que esté por encima de otros elementos */
+    
+    /* Estilo Visual */
+    background-color: #25D366; /* Verde oficial de WhatsApp */
+    width: 60px; 
+    height: 60px;
+    border-radius: 50%; /* Lo hace un círculo perfecto */
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.4); /* Sombra para que destaque */
+    
+    /* Centrado del Ícono */
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#whatsapp-btn-float:hover {
+    background-color: #128C7E; /* Cambio de color al pasar el ratón */
+}
+
+#fab-fa-whatsapp::before {
+    /* Define el ícono de WhatsApp */
+    content: "\f232"; /* Código Unicode para el ícono de WhatsApp en Font Awesome */
+    font-family: 'Font Awesome 6 Brands'; /* Asegura que se cargue la fuente de iconos */
+    font-size: 30px; 
+    color: white; /* Color blanco para el ícono */
+}
+/* Oculta la versión estática del botón en el menú de contacto */
+#contact-modal-content .whatsapp-float {
+    display: none;
+}
+/* --- ESTILO PARA LA UNIDAD DE MEDIDA (x 1 Lt) --- */
+.unidad-medida {
+    font-size: 0.9rem; /* Un poco más pequeño que el precio */
+    color: #666; /* Gris, para hacerlo discreto */
+    font-weight: 400; /* Normal */
+    margin-left: 5px;
+}
     
