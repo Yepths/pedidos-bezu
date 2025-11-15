@@ -87,36 +87,35 @@ window.addEventListener('load', function() {
     
     // Lista de productos integrada
     const productos = [
-      { "nombre": "Fresa", "precio": 10, "imagen": "imgs/fresa.jpg" },
-      { "nombre": "Guanabana", "precio": 10, "imagen": "imgs/guanabana.jpg" },
-      { "nombre": "Piña", "precio": 10, "imagen": "imgs/piña.jpg" },
-      { "nombre": "Durazno", "precio": 10, "imagen": "imgs/durazno.jpg" },
-      { "nombre": "Lúcuma", "precio": 10, "imagen": "imgs/lucma.jpg" },
-      { "nombre": "Vainilla", "precio": 10, "imagen": "imgs/vainilla.jpg" },
-      { "nombre": "Natural", "precio": 9.5, "imagen": "imgs/natural.jpg" }, 
-      { "nombre": "Arándano", "precio": 12, "imagen": "imgs/arandanos.jpg" }
+      { "nombre": "Fresa", "precio": 10, "imagen": "imgs/fresa.jpg","unidad": "x 1 Lt" },
+      { "nombre": "Guanabana", "precio": 10, "imagen": "imgs/guanabana.jpg","unidad": "x 1 Lt" },
+      { "nombre": "Piña", "precio": 10, "imagen": "imgs/piña.jpg","unidad": "x 1 Lt" },
+      { "nombre": "Durazno", "precio": 10, "imagen": "imgs/durazno.jpg","unidad": "x 1 Lt" },
+      { "nombre": "Lúcuma", "precio": 10, "imagen": "imgs/lucma.jpg","unidad": "x 1 Lt" },
+      { "nombre": "Vainilla", "precio": 10, "imagen": "imgs/vainilla.jpg","unidad": "x 1 Lt" },
+      { "nombre": "Natural", "precio": 9.5, "imagen": "imgs/natural.jpg","unidad": "x 1 Lt" }, 
+      { "nombre": "Arándano", "precio": 12, "imagen": "imgs/arandanos.jpg","unidad": "x 1 Lt" }
     ];
 
     function cargarProductos() {
-      const contenedor = document.getElementById("productos");
-      productos.forEach((prod, index) => {
-        const div = document.createElement("div");
-        div.classList.add("producto");
-        div.innerHTML = `
-          <img src="${prod.imagen}" alt="${prod.nombre}">
-          <h3>${prod.nombre}</h3>
-          <p>S/ ${prod.precio}</p>
-          <div class="extras">
-            <label><input type="checkbox" value="Chía"><span></span> + Chía (+S/1)</label>
-            <label><input type="checkbox" value="Linaza"><span></span> + Linaza (+S/1)</label>
-            <label><input type="checkbox" value="Cereal"><span></span> + Cereal (+S/2)</label>
-            <label><input type="checkbox" value="Granola"><span></span> + Granola (+S/9)<label>
-          </div>
-          <button class="agregar" onclick="agregarCarrito(${index}, this)"><i class="fas fa-plus-circle"></i> Añadir</button>
-        `;
-        contenedor.appendChild(div);
-      });
-    }
+    const contenedor = document.getElementById("productos");
+    productos.forEach((prod, index) => {
+      const div = document.createElement("div");
+      div.classList.add("producto");
+      div.innerHTML = `
+        <img src="${prod.imagen}" alt="${prod.nombre}">
+        <h3>${prod.nombre}</h3>
+        <p>S/ ${prod.precio} <span class="unidad-medida">${prod.unidad}</span></p>
+        <div class="extras">             <label><input type="checkbox" value="Chía"><span></span> + Chía (+S/1)</label>
+          <label><input type="checkbox" value="Linaza"><span></span> + Linaza (+S/1)</label>
+          <label><input type="checkbox" value="Cereal"><span></span> + Cereal (+S/2)</label>
+          <label><input type="checkbox" value="Granola"><span></span> + Granola (+S/9)<label>
+        </div>
+        <button class="agregar" onclick="agregarCarrito(${index}, this)"><i class="fas fa-plus-circle"></i> Añadir</button>
+      `;
+      contenedor.appendChild(div);
+    });
+}
 
     // *** FUNCIÓN MODIFICADA: Agrupa productos idénticos ***
     function agregarCarrito(index, btn) {
